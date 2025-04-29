@@ -24,4 +24,4 @@ def classify_text(request: TextRequest):
         raise HTTPException(status_code=500, detail="server error, Try Again!")
 
 def run():
-    uvicorn.run("text_classifier.main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("text_classifier.main:app", host="0.0.0.0", port=8080, reload=True)
