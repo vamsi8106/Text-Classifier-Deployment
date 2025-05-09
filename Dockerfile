@@ -1,19 +1,22 @@
 # Use official Python 3.10 image
 FROM python:3.10-slim
 
-# Set environment vars
+# Environment settings
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
-# Create app directory
+# Set working directory
 WORKDIR /app
 
-# Copy files
+# Copy everything into the container
 COPY . /app
 
-# Upgrade pip and install dependencies
+# Install dependencies
 RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt  # This is now at /app, which has setup.py
+
+# Change to src before running
+WORKDIR /app/src
 
 # Expose port
 EXPOSE 8080
